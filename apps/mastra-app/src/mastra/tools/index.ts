@@ -1,6 +1,6 @@
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
-import { formatTemperature, formatHumidity, formatWindSpeed } from 'shared-utils';
+// import { formatTemperature, formatHumidity, formatWindSpeed } from 'shared-utils';
 
 interface GeocodingResponse {
   results: {
@@ -60,9 +60,9 @@ const getWeather = async (location: string) => {
   const response = await fetch(weatherUrl);
   const data = (await response.json()) as WeatherResponse;
 
-  console.log(formatTemperature(data.current.temperature_2m))
-  console.log(formatHumidity(data.current.relative_humidity_2m))
-  console.log(formatWindSpeed(data.current.wind_speed_10m))
+  // console.log(formatTemperature(data.current.temperature_2m))
+  // console.log(formatHumidity(data.current.relative_humidity_2m))
+  // console.log(formatWindSpeed(data.current.wind_speed_10m))
 
   // Using shared utilities for formatting
   return {
