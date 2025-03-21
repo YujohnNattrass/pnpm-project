@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "pnpm run build:packages && pnpm run build:apps",
     "build:packages": "pnpm --filter \"shared-utils\" build",
     "build:apps": "pnpm --filter \"mastra-app\" build",
+    "build:shared-utils": "pnpm --filter \"shared-utils\" build",
     "build:mastra": "pnpm --filter \"mastra-app\" build"
   },
   "keywords": [],
