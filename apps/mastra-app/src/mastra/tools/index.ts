@@ -39,7 +39,8 @@ export const weatherTool = createTool({
     formattedHumidity: z.string(),
     formattedWindSpeed: z.string(),
   }),
-  execute: async ({ context }) => {
+  execute: async ({ context, mastra }) => {
+    mastra?.logger?.info(`~~~Getting weather for ${context.location}`);
     return await getWeather(context.location);
   },
 });
@@ -59,10 +60,13 @@ const getWeather = async (location: string) => {
 
   const response = await fetch(weatherUrl);
   const data = (await response.json()) as WeatherResponse;
-
-  console.log(formatTemperature(data.current.temperature_2m))
-  console.log(formatHumidity(data.current.relative_humidity_2m))
-  console.log(formatWindSpeed(data.current.wind_speed_10m))
+ try {
+   console.log(formatTemperature(data.current.temperature_2m))
+   console.log(formatHumidity(data.current.relative_humidity_2m))
+   console.log(formatWindSpeed(data.current.wind_speed_10m))
+ } catch (error) {
+   throw new Error(`Failed to get weather!!!: ${error}`);
+ }
 
   // Using shared utilities for formatting
   return {

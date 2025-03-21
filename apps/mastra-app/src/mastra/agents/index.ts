@@ -1,6 +1,7 @@
 import { openai } from '@ai-sdk/openai';
 import { Agent } from '@mastra/core/agent';
 import { weatherTool } from '../tools';
+import { Memory } from '@mastra/memory';
 
 // Use any to avoid complex type issues
 export const weatherAgent: any = new Agent({
@@ -19,4 +20,5 @@ export const weatherAgent: any = new Agent({
 `,
   model: openai('gpt-4o'),
   tools: { weatherTool },
+  memory: new Memory()
 });
