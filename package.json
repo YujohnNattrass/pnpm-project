@@ -4,15 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:packages": "pnpm --filter \"shared-utils\" build",
-    "build:apps": "pnpm --filter \"mastra-app\" build",
-    "build:shared-utils": "pnpm --filter \"shared-utils\" build",
-    "build:mastra": "pnpm --filter \"mastra-app\" build"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "build:packages": "turbo run build --filter=shared-utils",
+    "build:apps": "turbo run build --filter=mastra-app",
+    "build:shared-utils": "turbo run build --filter=shared-utils",
+    "build:mastra": "turbo run build --filter=mastra-app"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
-  "packageManager": "pnpm@9.12.3"
+  "packageManager": "pnpm@9.12.3",
+  "devDependencies": {
+    "turbo": "^2.4.4"
+  }
 }

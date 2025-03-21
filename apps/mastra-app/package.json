@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mastra build",
     "dev": "mastra dev",
-    "build": "mastra build"
+    "lint": "eslint src --ext .ts,.tsx"
   },
   "keywords": [],
   "author": "",
