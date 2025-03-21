@@ -41,11 +41,11 @@ export const weatherTool = createTool({
   }),
   execute: async ({ context, mastra }) => {
     mastra?.logger?.info(`~~~Getting weather for ${context.location}`);
-    return await getWeather(context.location);
+    return await getWeather(context.location, mastra?.logger);
   },
 });
 
-const getWeather = async (location: string) => {
+const getWeather = async (location: string, logger: any) => {
   const geocodingUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(location)}&count=1`;
   const geocodingResponse = await fetch(geocodingUrl);
   const geocodingData = (await geocodingResponse.json()) as GeocodingResponse;
@@ -60,10 +60,11 @@ const getWeather = async (location: string) => {
 
   const response = await fetch(weatherUrl);
   const data = (await response.json()) as WeatherResponse;
+  logger?.info(`~~~Got weather for ${location}`);
  try {
-   console.log(formatTemperature(data.current.temperature_2m))
-   console.log(formatHumidity(data.current.relative_humidity_2m))
-   console.log(formatWindSpeed(data.current.wind_speed_10m))
+   logger?.info(`~~~Temperature: ${formatTemperature(data.current.temperature_2m)}`)
+   logger?.info(`~~~Humidity: ${formatHumidity(data.current.relative_humidity_2m)}`)
+   logger?.info(`~~~Wind Speed: ${formatWindSpeed(data.current.wind_speed_10m)}`)
  } catch (error) {
    throw new Error(`Failed to get weather!!!: ${error}`);
  }
