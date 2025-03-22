@@ -1,6 +1,7 @@
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
-import { formatTemperature, formatHumidity, formatWindSpeed } from 'shared-utils';
+import { formatTemperature, formatHumidity, formatWindSpeed } from '@yj/shared-utils';
+import { getFormattedWeather, getWeatherSummary } from '@yj/weather-utils';
 
 interface GeocodingResponse {
   results: {
@@ -69,6 +70,17 @@ const getWeather = async (location: string, logger: any) => {
    throw new Error(`Failed to get weather!!!: ${error}`);
  }
 
+ logger?.info(`Weather summary: ${getWeatherSummary(
+  data.current.temperature_2m,
+  data.current.relative_humidity_2m,
+  data.current.wind_speed_10m
+)}`);
+
+  const formattedData = getFormattedWeather(
+    data.current.temperature_2m,
+    data.current.relative_humidity_2m,
+    data.current.wind_speed_10m
+  );
   // Using shared utilities for formatting
   return {
     temperature: data.current.temperature_2m,

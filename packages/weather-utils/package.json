@@ -1,13 +1,16 @@
 {
-  "name": "@yj/shared-utils",
+  "name": "@yj/weather-utils",
   "version": "1.0.0",
-  "description": "Shared utilities for the monorepo",
+  "description": "Weather utilities for the monorepo",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "dev": "tsc -p tsconfig.build.json --watch",
     "lint": "eslint src --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "@yj/shared-utils": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.8.2"

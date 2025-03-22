@@ -17,7 +17,8 @@
     "@mastra/core": "^0.6.3",
     "@mastra/memory": "^0.2.4",
     "mastra": "^0.4.2",
-    "shared-utils": "workspace:*",
+    "@yj/shared-utils": "workspace:*",
+    "@yj/weather-utils": "workspace:*",
     "zod": "^3.24.2"
   },
   "devDependencies": {
