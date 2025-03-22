@@ -1,6 +1,7 @@
 import { openai } from '@ai-sdk/openai';
 import { Agent } from '@mastra/core/agent';
-import { weatherTool } from '../tools';
+// import { weatherTool } from '../tools';
+import { weatherTool } from '@yj/weather-utils';
 import { Memory } from '@mastra/memory';
 
 // Use any to avoid complex type issues
@@ -19,6 +20,7 @@ export const weatherAgent: any = new Agent({
       Use the weatherTool to fetch current weather data.
 `,
   model: openai('gpt-4o'),
+  // @ts-expect-error
   tools: { weatherTool },
   memory: new Memory()
 });
