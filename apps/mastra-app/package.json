@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:mastra": "mastra build",
+    "build:mastra": "mastra build --dir something/mastra",
     "dev": "mastra dev",
     "lint": "eslint src --ext .ts,.tsx"
   },
