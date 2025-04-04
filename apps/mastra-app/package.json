@@ -14,9 +14,9 @@
   "type": "module",
   "dependencies": {
     "@ai-sdk/openai": "^1.3.0",
-    "@mastra/core": "alpha",
-    "@mastra/memory": "alpha",
-    "mastra": "alpha",
+    "@mastra/core": "latest",
+    "@mastra/memory": "latest",
+    "mastra": "latest",
     "@yj/shared-utils": "workspace:*",
     "@yj/weather-utils": "workspace:*",
     "zod": "^3.24.2"
